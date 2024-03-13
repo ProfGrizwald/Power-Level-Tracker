@@ -198,7 +198,7 @@ class Character {
 		this.power_div = document.createElement("input");
 		this.power_div.classList.add("bar");
 		this.power_div.setAttribute("type", "range");
-		this.power_div.setAttribute("title", "Spell Power");
+		this.power_div.setAttribute("title", "Power Level");
 		this.power_div.setAttribute("min", this.power_min);
 		this.power_div.setAttribute("value", this.power_current);
 		this.power_div.setAttribute("max", this.power_max);
