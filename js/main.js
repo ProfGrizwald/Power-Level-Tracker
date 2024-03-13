@@ -97,7 +97,7 @@ div_calculator_apply.addEventListener("click", () => {
 						characters[character_selected_UUID].power_max,
 						characters[character_selected_UUID].power_max,
 						value
-					), 1);
+					), Math.max(characters[character_selected_UUID].power_min, 1));
 					characters[character_selected_UUID].update_power_max(new_value);
 					break;
 			}
