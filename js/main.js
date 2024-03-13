@@ -145,8 +145,8 @@ divs_radios_array.forEach(function (radios) {
 div_calculator_value.addEventListener("keydown", (e) => numerize(e));
 
 const DEFAULTS = {
-	power_min: 50,
-	power_current: 75,
+	power_min: 0,
+	power_current: 50,
 	power_max: 100,
 };
 
