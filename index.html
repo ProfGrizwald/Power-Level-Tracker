@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grizwald</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="dim-screen"></div>
+    <div id="global-wrapper">
+        <div id="characters">
+            <button type="button" id="character-new">add character</button>
+        </div>
+
+        <div id="calculator" class="visible">
+            <ul id="character-active-name" class="dropdown"></ul>
+
+            <div id="calculator-stat-wrapper">
+                <ul id="calculator-stat-range" class="dropdown">
+                    <li>min</li>
+                    <li class="selected">current</li>
+                    <li>max</li>
+                </ul>
+
+                <ul id="calculator-stat-type" class="dropdown">
+                    <li class="selected">power</li>
+                </ul>
+            </div>
+
+            <div id="calculator-options">
+                <ul id="calculator-operator" class="radios">
+                    <li class="selected">+</li>
+                    <li>-</li>
+                </ul>
+                <input id="calculator-value" type="number" placeholder="0">
+                <input id="calculator-is-percent" type="checkbox">
+            </div>
+
+            <div id="calculator-apply">apply</div>
+        </div>
+
+    </div>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
