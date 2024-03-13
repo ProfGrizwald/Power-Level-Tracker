@@ -1,6 +1,8 @@
 import numerize from "./number_input.js";
 import { RandomName, RandomColor } from "./name_generator.js";
 
+const final_max = 1.2
+
 let div_dim_screen = document.getElementById("dim-screen");
 let div_characters = document.getElementById("characters");
 let div_new_character = document.getElementById("character-new");
@@ -74,27 +76,28 @@ div_calculator_apply.addEventListener("click", () => {
 		case "power":
 			switch (stat_range) {
 				case "min":
-					new_value = calculate_new_value(
+					new_value = Math.max(Math.min(calculate_new_value(
 						characters[character_selected_UUID].power_min,
 						characters[character_selected_UUID].power_min,
 						value
-					);
+					), characters[character_selected_UUID].power_current), 0);
 					characters[character_selected_UUID].update_power_min(new_value);
 					break;
 				case "current":
-					new_value = calculate_new_value(
+					new_value = Math.max(Math.min(calculate_new_value(
 						characters[character_selected_UUID].power_current,
 						characters[character_selected_UUID].power_max,
 						value
-					);
+					), characters[character_selected_UUID].power_max * final_max),
+					characters[character_selected_UUID].power_min);
 					characters[character_selected_UUID].update_power_current(new_value);
 					break;
 				case "max":
-					new_value = calculate_new_value(
+					new_value = Math.max(calculate_new_value(
 						characters[character_selected_UUID].power_max,
 						characters[character_selected_UUID].power_max,
 						value
-					);
+					), 1);
 					characters[character_selected_UUID].update_power_max(new_value);
 					break;
 			}
