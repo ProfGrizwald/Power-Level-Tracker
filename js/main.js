@@ -25,7 +25,7 @@ div_dim_screen.addEventListener("click", () =>
 
 div_new_character.addEventListener("click", () => new Character());
 
-const calculate_new_value = (outdated_value, value) => {
+const calculate_new_value = (outdated_value, max_value, value) => {
 	let is_percent = div_calculator_is_percent.checked;
 
 	let selected_operator = div_calculator_operator.querySelector("li.selected");
@@ -34,13 +34,13 @@ const calculate_new_value = (outdated_value, value) => {
 	if (is_percent) {
 		switch (operator) {
 			case "+":
-				return outdated_value + (outdated_value * value) / 100;
+				return outdated_value + (max_value * value) / 100;
 			case "-":
-				return outdated_value - (outdated_value * value) / 100;
+				return outdated_value - (max_value * value) / 100;
 			case "*":
-				return (outdated_value * (outdated_value * value)) / 100;
+				return (outdated_value * (max_value * value)) / 100;
 			case "/":
-				return outdated_value / (outdated_value * value) / 100;
+				return outdated_value / (max_value * value) / 100;
 		}
 	} else {
 		switch (operator) {
@@ -76,6 +76,7 @@ div_calculator_apply.addEventListener("click", () => {
 				case "min":
 					new_value = calculate_new_value(
 						characters[character_selected_UUID].power_min,
+						characters[character_selected_UUID].power_min,
 						value
 					);
 					characters[character_selected_UUID].update_power_min(new_value);
@@ -83,12 +84,14 @@ div_calculator_apply.addEventListener("click", () => {
 				case "current":
 					new_value = calculate_new_value(
 						characters[character_selected_UUID].power_current,
+						characters[character_selected_UUID].power_max,
 						value
 					);
 					characters[character_selected_UUID].update_power_current(new_value);
 					break;
 				case "max":
 					new_value = calculate_new_value(
+						characters[character_selected_UUID].power_max,
 						characters[character_selected_UUID].power_max,
 						value
 					);
